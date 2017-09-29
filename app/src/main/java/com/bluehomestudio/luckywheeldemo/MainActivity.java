@@ -51,20 +51,24 @@ public class MainActivity extends AppCompatActivity {
 
         lw.rotateWheelTo(number);
 
+        final Button start = (Button) findViewById(R.id.start);
+
         lw.setLuckyWheelReachTheTarget(new OnLuckyWheelReachTheTarget() {
             @Override
             public void onReachTarget() {
                 Toast.makeText(MainActivity.this, "Target Reached : " + number, Toast.LENGTH_LONG).show();
+                start.setVisibility(View.VISIBLE);
             }
         });
 
-        Button start = (Button) findViewById(R.id.start);
+        start.setVisibility(View.GONE);
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Random random = new Random();
                 number = random.nextInt(9 - 1 + 1) + 1;
                 lw.rotateWheelTo(number);
+                start.setVisibility(View.GONE);
             }
         });
 
