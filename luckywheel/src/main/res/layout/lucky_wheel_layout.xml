@@ -6,13 +6,15 @@
     <com.bluehomestudio.luckywheel.WheelView
         android:id="@+id/wv_main_wheel"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        />
 
     <ImageView
         android:id="@+id/iv_arrow"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_centerHorizontal="true"
+        android:layout_marginTop="-20dp"
         android:src="@drawable/arrow"/>
 
 </RelativeLayout>

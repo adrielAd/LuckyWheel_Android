@@ -14,8 +14,11 @@ import com.bluehomestudio.luckywheel.WheelItem;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
+
+    int number = 1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,17 +38,23 @@ public class MainActivity extends AppCompatActivity {
                 R.drawable.ic_action_name)));
         wheelItems.add(new WheelItem(Color.GREEN, BitmapFactory.decodeResource(getResources(),
                 R.drawable.ic_action_name)));
+        wheelItems.add(new WheelItem(Color.WHITE, BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_action_name)));
+        wheelItems.add(new WheelItem(Color.DKGRAY, BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_action_name)));
+        wheelItems.add(new WheelItem(Color.CYAN, BitmapFactory.decodeResource(getResources(),
+                R.drawable.ic_action_name)));
 
 
         final LuckyWheel lw = (LuckyWheel) findViewById(R.id.lwv);
         lw.addWheelItems(wheelItems);
 
-        lw.rotateWheelTo(1);
+        lw.rotateWheelTo(number);
 
         lw.setLuckyWheelReachTheTarget(new OnLuckyWheelReachTheTarget() {
             @Override
             public void onReachTarget() {
-                Toast.makeText(MainActivity.this, "Target Reached", Toast.LENGTH_LONG).show();
+                Toast.makeText(MainActivity.this, "Target Reached : " + number, Toast.LENGTH_LONG).show();
             }
         });
 
@@ -53,9 +62,12 @@ public class MainActivity extends AppCompatActivity {
         start.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                lw.rotateWheelTo(4);
+                Random random = new Random();
+                number = random.nextInt(9 - 1 + 1) + 1;
+                lw.rotateWheelTo(number);
             }
         });
 
     }
+
 }
